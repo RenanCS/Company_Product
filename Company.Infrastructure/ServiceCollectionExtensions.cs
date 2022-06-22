@@ -1,17 +1,13 @@
 ﻿using AutoMapper;
-using Company.Application.InputModel;
 using Company.Application.Mappings;
 using Company.Application.Service;
 using Company.Application.Service.Interface;
-using Company.Application.Validators;
 using Company.Core.Repositories;
 using Company.Infrastructure.Persistence;
 using Company.Infrastructure.Persistence.Repositories;
-using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 
 namespace Company.Infrastructure
 {
@@ -59,7 +55,7 @@ namespace Company.Infrastructure
             return services;
         }
 
-      
+
 
     }
 }
