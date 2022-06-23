@@ -8,8 +8,8 @@ namespace Company.Application.Service.Interface
     {
         Task<IEnumerable<ProductInputModel>> GetProductsAsync();
         Task<ProductInputModel> GetProductByIdAsync(int id);
-        Task AddProductAsync(ProductInputModel productDTO);
-        Task UpdateProductyAsync(ProductInputModel productDTO);
-        Task RemoveProductAsync(int id);
+        Task<bool> AddProductAsync(ProductInputModel productInputModel);
+        Task<bool> UpdateProductyAsync(ProductInputModel productInputModel);
+        Task<bool> RemoveProductAsync(int id);
     }
 }

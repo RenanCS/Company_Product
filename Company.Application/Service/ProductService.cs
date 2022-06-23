@@ -19,23 +19,47 @@ namespace Company.Application.Service
             _mapper = mapper;
         }
 
-        public async Task AddProductAsync(ProductInputModel productInputModel)
+        public async Task<bool> AddProductAsync(ProductInputModel productInputModel)
         {
+            if(productInputModel == null)
+            {
+                return false;
+            }
+
             var product = _mapper.Map<Product>(productInputModel);
             await _productRepository.CreateAsync(product);
             productInputModel.Id = product.Id;
+            return true;
         }
 
-        public async Task UpdateProductyAsync(ProductInputModel productInputModel)
+        public async Task<bool> UpdateProductyAsync(ProductInputModel productInputModel)
         {
+            if(productInputModel == null)
+            {
+                return false;
+            }
+
             var product = _mapper.Map<Product>(productInputModel);
             await _productRepository.UpdateAsync(product);
+            return true;
         }
 
-        public async Task RemoveProductAsync(int id)
+        public async Task<bool> RemoveProductAsync(int id)
         {
+            if(id == 0)
+            {
+                return false;
+            }
+
             var product = await _productRepository.GetByIdAsync(id);
+
+            if(product == null)
+            {
+                return false;
+            }
+
             await _productRepository.DeleteAsync(product.Id);
+            return true;
         }
 
         public async Task<ProductInputModel> GetProductByIdAsync(int id)
@@ -49,8 +73,6 @@ namespace Company.Application.Service
             var products = await _productRepository.GetAllAsync();
             return _mapper.Map<IEnumerable<ProductInputModel>>(products);
         }
-
-
 
     }
 }
