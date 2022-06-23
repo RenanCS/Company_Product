@@ -19,14 +19,14 @@ namespace Company.ProducApi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ProductInputModel>>> Get()
         {
-            var productDTOs = await _productService.GetProductsAsync();
+            var productInputModels = await _productService.GetProductsAsync();
 
-            if (productDTOs is null)
+            if (productInputModels is null)
             {
                 return NotFound("products not found");
             }
 
-            return Ok(productDTOs);
+            return Ok(productInputModels);
         }
 
         [HttpGet("{id:int}", Name = "GetProduct")]
@@ -45,6 +45,11 @@ namespace Company.ProducApi.Controllers
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] ProductInputModel productInputModel)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             if (productInputModel is null)
             {
                 return BadRequest("Invalid Data");
@@ -58,9 +63,14 @@ namespace Company.ProducApi.Controllers
         [HttpPut]
         public async Task<ActionResult> Put([FromBody] ProductInputModel productInputModel)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             if (productInputModel is null)
             {
-                return BadRequest();
+                return BadRequest("Invalid Data");
             }
 
             await _productService.UpdateProductyAsync(productInputModel);
@@ -76,7 +86,7 @@ namespace Company.ProducApi.Controllers
 
             if (productInputModel is null)
             {
-                return NotFound("Category not found");
+                return NotFound("Product not found");
             }
 
             await _productService.RemoveProductAsync(id);

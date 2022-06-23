@@ -1,4 +1,5 @@
 ﻿using Bogus;
+using Company.Application.InputModel;
 using Company.Core.Entities;
 using System.Collections.Generic;
 
@@ -6,6 +7,15 @@ namespace Company.UnitTests.Helper
 {
     public class FactoryCategory
     {
+
+        public static IEnumerable<CategoryInputModel> GetCategoryInputModel(int quantityCategory = 1)
+        {
+            var categories = GetCategoriesFaker(quantityCategory);
+            var mapper = AutoMappingHelper.ConfigureAutoMapping();
+            return mapper.Map<IEnumerable<CategoryInputModel>>(categories);
+
+        }
+
         public static IEnumerable<Category> GetCategoriesFaker(int quantityCategory = 1)
         {
             var list = new List<Category>();
