@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoFixture" Version="4.17.0" />
     <PackageReference Include="Bogus" Version="34.0.2" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1" />
     <PackageReference Include="Moq" Version="4.18.1" />
@@ -23,6 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Company.Application\Company.Application.csproj" />
+    <ProjectReference Include="..\Company.ProducApi\Company.ProducApi.csproj" />
   </ItemGroup>
 
 </Project>

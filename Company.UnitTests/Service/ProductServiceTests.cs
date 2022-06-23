@@ -100,7 +100,7 @@ namespace Company.UnitTests.Service
         [Fact]
         public async Task AddProductAsync_ShoulReturnTrue_WhenAddNewProduct()
         {
-            ProductInputModel productInputModelStub = FactoryProduct.GetProductsInputModelFaker(_faker.Random.Int(1, 10));
+            ProductInputModel productInputModelStub = FactoryProduct.GetProductInputModelFaker(_faker.Random.Int(1, 10));
 
             _productRepositoryMock.Setup(x => x.CreateAsync(It.IsAny<Product>()));
 
@@ -126,7 +126,7 @@ namespace Company.UnitTests.Service
         [Fact]
         public async Task UpdateProductyAsync_ShoulReturnTrue_WhenUpdatedProduct()
         {
-            ProductInputModel productInputModelStub = FactoryProduct.GetProductsInputModelFaker(_faker.Random.Int(1, 10));
+            ProductInputModel productInputModelStub = FactoryProduct.GetProductInputModelFaker(_faker.Random.Int(1, 10));
 
             _productRepositoryMock.Setup(x => x.CreateAsync(It.IsAny<Product>()));
 
