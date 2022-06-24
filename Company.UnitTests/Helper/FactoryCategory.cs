@@ -25,7 +25,7 @@ namespace Company.UnitTests.Helper
                 var category = new Faker<Category>()
                     .RuleFor(c => c.Description, f => f.Commerce.ProductDescription())
                     .RuleFor(c => c.Name, f => f.Commerce.ProductName())
-                    .RuleFor(c => c.CategoryId, f => f.Random.Int(1, 10));
+                    .RuleFor(c => c.CategoryId, f => i + 1);
                 list.Add(category);
             }
             return list;
