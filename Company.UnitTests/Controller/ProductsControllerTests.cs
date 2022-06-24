@@ -1,18 +1,13 @@
-﻿using AutoFixture;
-using Bogus;
+﻿using Bogus;
 using Company.Application.InputModel;
 using Company.Application.Service.Interface;
-using Company.Application.Validators;
 using Company.ProducApi.Controllers;
 using Company.UnitTests.Helper;
-using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -127,7 +122,7 @@ namespace Company.UnitTests.Controller
         public async Task Post_ShoulReturnBadRequest_WhenAddNewProductNull()
         {
             ProductInputModel productInputModel = null;
-                    
+
             _controller = MakeSut(_productServiceMock.Object);
 
             var response = await _controller.Post(productInputModel);
@@ -142,7 +137,7 @@ namespace Company.UnitTests.Controller
         {
             ProductInputModel productInputModel = FactoryProduct.GetProductInputModelFaker(0);
             productInputModel.Name = null;
-                              
+
             _controller = MakeSut(_productServiceMock.Object);
             _controller.ModelState.AddModelError("Name", "Nome do produto dever ser válido");
 
@@ -176,7 +171,7 @@ namespace Company.UnitTests.Controller
         public async Task Puut_ShoulReturnBadRequest_WhenProductIsNull()
         {
             ProductInputModel productInputModel = null;
-                                 
+
             _controller = MakeSut(_productServiceMock.Object);
 
             var response = await _controller.Post(productInputModel);
