@@ -1,13 +1,8 @@
-﻿using AutoMapper;
-using Bogus;
-using Company.Core.Entities;
-using Company.Core.Repositories;
+﻿using Company.Core.Repositories;
 using Company.Infrastructure.Persistence;
 using Company.Infrastructure.Persistence.Repositories;
 using Company.UnitTests.Helper;
-using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
@@ -18,7 +13,7 @@ namespace Company.UnitTests.Repository
     {
         private ICategoryRepository _categoryRepository;
 
- 
+
         #region MAKESUT
 
         private void MakeSut(DbContextOptions<CompanyDbContext> optionsStub)

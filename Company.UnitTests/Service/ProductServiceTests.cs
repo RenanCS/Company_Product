@@ -1,10 +1,6 @@
-﻿using AutoMapper;
-using Bogus;
+﻿using Bogus;
 using Company.Application.InputModel;
-using Company.Application.Service;
-using Company.Application.Service.Interface;
 using Company.Core.Entities;
-using Company.Core.Repositories;
 using Company.UnitTests.Fixtures;
 using Company.UnitTests.Helper;
 using Moq;
@@ -15,7 +11,7 @@ using Xunit;
 
 namespace Company.UnitTests.Service
 {
-    public class ProductServiceTests: IClassFixture<ProductServiceFixture>
+    public class ProductServiceTests : IClassFixture<ProductServiceFixture>
     {
         private readonly ProductServiceFixture _productServiceFixture;
         private Faker _faker;
@@ -55,7 +51,7 @@ namespace Company.UnitTests.Service
                .Setup(x => x.GetAllAsync())
                .ReturnsAsync(productsStub);
 
-             _productServiceFixture.MakeSut();
+            _productServiceFixture.MakeSut();
 
             var result = await _productServiceFixture._productService.GetProductsAsync();
 
@@ -187,7 +183,7 @@ namespace Company.UnitTests.Service
 
             _productServiceFixture.MakeSut();
 
-            var result = await _productServiceFixture._productService.RemoveProductAsync(_faker.Random.Int(1,10));
+            var result = await _productServiceFixture._productService.RemoveProductAsync(_faker.Random.Int(1, 10));
 
             Assert.False(result);
         }

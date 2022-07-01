@@ -4,10 +4,7 @@ using Company.Infrastructure.Persistence;
 using Company.Infrastructure.Persistence.Repositories;
 using Company.UnitTests.Helper;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -36,7 +33,7 @@ namespace Company.UnitTests.Repository
         {
             var optionsStub = FactoryDbContext.CreateConnection();
             var expectCountCategory = 5;
-           
+
             MakeSut(optionsStub);
 
 
@@ -141,7 +138,7 @@ namespace Company.UnitTests.Repository
             using (var context = new CompanyDbContext(optionsStub))
             {
                 _productRepository = new ProductRepository(context);
-               await _productRepository.UpdateAsync(updatedProductMock);                 
+                await _productRepository.UpdateAsync(updatedProductMock);
             }
 
             using (var context = new CompanyDbContext(optionsStub))
@@ -167,7 +164,7 @@ namespace Company.UnitTests.Repository
 
                 _productRepository = new ProductRepository(context);
                 await _productRepository.CreateAsync(initialProductMock);
-            }                      
+            }
 
             using (var context = new CompanyDbContext(optionsStub))
             {
@@ -179,7 +176,7 @@ namespace Company.UnitTests.Repository
             {
                 _productRepository = new ProductRepository(context);
                 var result = await _productRepository.GetByIdAsync(initialProductMock.Id);
-                Assert.Null( result);
+                Assert.Null(result);
             }
         }
     }
